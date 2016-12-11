@@ -10,7 +10,7 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 
-#define DEBUG 1
+#define DEBUG 0
 /*union semun {
     int val;
     struct semid_ds *buf;
@@ -80,6 +80,7 @@ int main(int argnum, char **args) {
 
         //closing file
         close(f);
+        printf("Shared memory and semaphore have been created.\nFor more information, set DEBUG to 1 in control.c\n");
     }
     //creation of shared memory
 
@@ -106,6 +107,7 @@ int main(int argnum, char **args) {
         shmcval = shmctl(shmid, IPC_RMID, &buf);
         if (DEBUG) printf("Shared mem is removed, val should be 0. Value: %d\n", shmcval);
 
+        printf("Shared memory and semaphore have been removed.\n");
         //printing story
         showstory();
     }
