@@ -57,7 +57,7 @@ int main(int argnum, char **args) {
     if (strncmp(args[1], "-c", strlen(args[1])) == 0) {
         //creation of file
         umask(0000);
-        f = open("story.txt", O_CREAT, 0644);
+        f = open("story.txt", O_CREAT | O_TRUNC, 0644);
         umask(0022);
 
         //creation of shared memory for character num
