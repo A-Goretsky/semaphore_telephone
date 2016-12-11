@@ -9,15 +9,7 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
-/*
-union semun {
-  int              val;
-  struct semid_ds *buf;
-  unsigned short  *array;
-  struct seminfo  *__buf;
 
-};
-*/
 int main() {
   //same key as control; semaphore magic
   int semkey = ftok("makefile", 23);
