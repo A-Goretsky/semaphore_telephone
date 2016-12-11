@@ -17,10 +17,8 @@ int main() {
   struct sembuf sb;
   sb.sem_num = 0;
   sb.sem_flg = SEM_UNDO;
-  //wait for the semaphore to become available
-  sb.sem_op = 0;
-  semop(semid, &sb, 1);
-  //down it as soon as it is
+
+  //down it
   sb.sem_op = -1;
   semop(semid, &sb, 1);
 
