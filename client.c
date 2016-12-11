@@ -34,9 +34,14 @@ int main() {
   int fd = open("story.txt", O_RDWR | O_APPEND);
   lseek(fd, -(*lul), SEEK_END);
   read(fd, lu, *lul);
-  printf("Last Update: %s", lu);
-  printf("Type Here: ");
-
+  if(!*lul){
+    printf("Start the Story: ");
+  }
+  else{
+    printf("Last Update: %s", lu);
+    printf("Type Here: ");
+  }
+  
   //Next Update
   char nu[256];
   fgets(nu, 256, stdin);
