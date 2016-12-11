@@ -19,13 +19,12 @@
 };*/
 
 void showstory() {
-    char *storage;
     int file;
-    file = open("story.txt", O_RDONLY);
-    int num = lseek(file, 0, SEEK_END);
-    read(file, storage, num);
-    printf("HELLO");
-    printf("%s\n", storage);
+    file = open("story.txt", O_RDWR);
+    char storage[1000000];
+    read(file, storage, sizeof(storage));
+    printf("--------------\nPrinting Story\n--------------\n");
+    printf("%s", storage);
     close(file);
 }
 
@@ -86,8 +85,8 @@ int main(int argnum, char **args) {
 
 //Viewing
     if (strncmp(args[1], "-v", strlen(args[1])) == 0) {
-        return 1;
-        //showstory();
+        //return 1;
+        showstory();
     }
 
 //Removing
@@ -108,7 +107,7 @@ int main(int argnum, char **args) {
         if (DEBUG) printf("Shared mem is removed, val should be 0. Value: %d\n", shmcval);
 
         //printing story
-        //showstory();
+        showstory();
     }
     return 0;
 }
