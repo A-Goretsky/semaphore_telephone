@@ -29,7 +29,7 @@ int main() {
   long *lul = shmat(shmid, 0, 0);
   //Last Update
   char *lu = (char *)malloc(*lul + 1);
-  
+
   //locating point in story and displaying last addition
   int fd = open("story.txt", O_RDWR | O_APPEND);
   lseek(fd, -(*lul), SEEK_END);
@@ -41,10 +41,10 @@ int main() {
     printf("Last Update: %s", lu);
     printf("Type Here: ");
   }
-  
+
   //Next Update
-  char nu[256];
-  fgets(nu, 256, stdin);
+  char nu[512];
+  fgets(nu, 512, stdin);
 
   //convenient placement :)
   *lul = strlen(nu);
@@ -52,12 +52,12 @@ int main() {
   //cursor is at end of file, write length of input
   write(fd, nu, *lul);
   close(fd);
-  
+
   shmdt(lul);
-  
+
   //send the semaphore back skywards
   sb.sem_op = 1;
   semop(semid, &sb, 1);
-  
+
   return 0;
 }
