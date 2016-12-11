@@ -43,7 +43,7 @@ int main() {
   char nu[256];
   fgets(nu, 256, stdin);
 
-  //since you need it for detach anyway
+  //convenient placement :)
   *lul = strlen(nu);
 
   //cursor is at end of file, write length of input
